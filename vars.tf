@@ -1,7 +1,7 @@
-variable "allocated_storage" {}
+#variable "allocated_storage" {}
 variable "engine" {}
-variable "engine_version" {}
-variable "instance_class" {}
+#variable "engine_version" {}
+#variable "instance_class" {}
 variable "env" {}
 variable "tags" {}
 variable "subnets" {}
