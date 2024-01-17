@@ -34,7 +34,7 @@ resource "aws_security_group" "main" {
   tags = merge(var.tags, { Name = "${local.prefix}-docdb" })
 }
 
-resource "aws_docdb_cluster" "docdb" {
+resource "aws_docdb_cluster" "main" {
   cluster_identifier     = "${local.prefix}-docdb"
   engine                 = var.engine
   engine_version         = var.engine_version
@@ -49,7 +49,7 @@ resource "aws_docdb_cluster" "docdb" {
 resource "aws_docdb_cluster_instance" "main" {
   count              = var.instance_count
   identifier         = "${local.prefix}-docdb-${count.index + 1}"
-  cluster_identifier = aws_docdb_cluster.docdb.id
+  cluster_identifier = aws_docdb_cluster.main.id
   instance_class     = var.instance_class
 }
 
