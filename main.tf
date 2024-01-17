@@ -46,5 +46,12 @@ resource "aws_docdb_cluster" "docdb" {
   db_subnet_group_name   = aws_docdb_subnet_group.main.name
 }
 
+resource "aws_docdb_cluster_instance" "main" {
+  count              = var.instance_count
+  identifier         = "${local.prefix}-docdb-${count.index + 1}"
+  cluster_identifier = aws_docdb_cluster.docdb.id
+  instance_class     = var.instance_class
+}
+
 
 
